@@ -5,44 +5,50 @@ import 'package:shared_preferences/shared_preferences.dart';
 class ScreenHome extends StatelessWidget {
   const ScreenHome({super.key});
 
+// original
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('HOME'),
+          title: const Text('HOME'),
           actions: [
             IconButton(
-                onPressed: () {
-                  showDialog(
-                      context: context,
-                      builder: ((context) {
-                        return AlertDialog(
-                          content: Text("Do you want exit"),
-                          actions: [
-                            TextButton(
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                },
-                                child: Text("No")),
-                            TextButton(
-                                onPressed: () {
-                                  signout(context);
-                                },
-                                child: Text("Yes"))
-                          ],
-                        );
-                      }));
-                },
-                icon: Icon(Icons.exit_to_app))
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: ((context) {
+                    return AlertDialog(
+                      content: const Text("Do you want exit"),
+                      actions: [
+                        TextButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          child: const Text("No"),
+                        ),
+                        TextButton(
+                          onPressed: () {
+                            signout(context);
+                          },
+                          child: const Text("Yes"),
+                        )
+                      ],
+                    );
+                  }),
+                );
+              },
+              icon: const Icon(Icons.exit_to_app),
+            )
           ],
         ),
         body: SafeArea(
           child: ListView.separated(
               itemBuilder: (ctx, intex) {
                 return ListTile(
-                  title: Text('PERSON '),
+                  title: const Text('PERSON '),
                   subtitle: Text('message $intex'),
-                  leading: CircleAvatar(
+                  leading: const CircleAvatar(
                     radius: 30,
                     backgroundColor: Colors.yellow,
                     backgroundImage: NetworkImage(
@@ -53,7 +59,7 @@ class ScreenHome extends StatelessWidget {
                 );
               },
               separatorBuilder: (ctx, intex) {
-                return Divider();
+                return const Divider();
               },
               itemCount: 20),
         ));

@@ -1,5 +1,5 @@
 // ignore_for_file: no_leading_underscores_for_local_identifiers, prefer_const_constructors
-
+// original
 import 'package:flutter/material.dart';
 import 'package:login_page/main.dart';
 import 'package:login_page/screens/home.dart';
@@ -46,19 +46,20 @@ class _ScreenLoginState extends State<ScreenLogin> {
                   ),
                 ),
                 TextFormField(
-                    controller: _usernameController,
-                    decoration: const InputDecoration(
-                        enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.yellow)),
-                        border: OutlineInputBorder(),
-                        hintText: 'User name'),
-                    validator: (value) {
-                      if (_isDtaMached) {
-                        if (value == null || value.isEmpty) {
-                          return 'value is Empty';
-                        }
+                  controller: _usernameController,
+                  decoration: const InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.yellow)),
+                      border: OutlineInputBorder(),
+                      hintText: 'Username'),
+                  validator: (value) {
+                    if (_isDtaMached) {
+                      if (value == null || value.isEmpty) {
+                        return 'value is Empty';
                       }
-                    }),
+                    }
+                  },
+                ),
                 const SizedBox(
                   height: 30,
                 ),
@@ -116,9 +117,7 @@ class _ScreenLoginState extends State<ScreenLogin> {
     final _username = _usernameController.text;
     final _password = _passwordController.text;
     if (_username == _password) {
-      print('Username match');
       //    Goto Home
-
       final _sharedprefs = await SharedPreferences.getInstance();
       await _sharedprefs.setBool(SAVE_KEY_NAME, true);
       Navigator.of(ctx)
@@ -128,7 +127,10 @@ class _ScreenLoginState extends State<ScreenLogin> {
         behavior: SnackBarBehavior.floating,
         backgroundColor: Colors.red[800],
         margin: EdgeInsets.all(10),
-        content: Text("Username and Password not match", style: TextStyle(color: Colors.white),),
+        content: Text(
+          "Username and Password not match",
+          style: TextStyle(color: Colors.white),
+        ),
         duration: Duration(seconds: 3),
       ));
     }

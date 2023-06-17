@@ -5,6 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'login.dart';
 
+// original
 class ScreenSplash extends StatefulWidget {
   const ScreenSplash({super.key});
 
@@ -24,17 +25,22 @@ class _ScreenSplashState extends State<ScreenSplash> {
     return Scaffold(
       backgroundColor: Colors.black87,
       body: Center(
-          child: Image.asset(
-        "assets/images/Picsart_23-01-22_21-16-21-596.png",
-        height: 250,
-      )),
+        child: Image.asset(
+          "assets/images/Picsart_23-01-22_21-16-21-596.png",
+          height: 250,
+        ),
+      ),
     );
   }
 
   Future<void> gotoLogin() async {
-    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) {
-      return ScreenLogin();
-    }));
+    Navigator.of(context).pushReplacement(
+      MaterialPageRoute(
+        builder: (context) {
+          return ScreenLogin();
+        },
+      ),
+    );
   }
 
   Future<void> checkUserLoggedIn() async {
